@@ -26,12 +26,3 @@ Invoke-WebRequest -Uri $thunderbirdInstallerUrl -OutFile "$env:TEMP\thunderbird_
 Start-Process -Wait -FilePath "$env:TEMP\thunderbird_installer.exe"
 Remove-Item "$env:TEMP\thunderbird_installer.exe" -Force
 Write-Host "Thunderbird installed successfully."
-
-
-# Install Veeam
-$veeamInstallerUrl = "https://path/to/veeam_installer.exe"
-Invoke-WebRequest -Uri $veeamInstallerUrl -OutFile "$env:TEMP\veeam_installer.exe"
-Install Veeam
-Start-Process -Wait -FilePath "$env:TEMP\veeam_installer.exe"
-Remove-Item "$env:TEMP\veeam_installer.exe" -Force
-Write-Host "Veeam installation completed successfully."
