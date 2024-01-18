@@ -21,7 +21,7 @@ Write-Host "Visual Studio Code installed successfully."
 
 
 # Install Thunderbird (Email Client)
-$thunderbirdInstallerUrl = "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/latest/win64/en-US/Thunderbird%20Setup%20Latest.exe"
+$thunderbirdInstallerUrl = "https://download.mozilla.org/?product=thunderbird-115.6.1-SSL&os=win64&lang=en-US"
 Invoke-WebRequest -Uri $thunderbirdInstallerUrl -OutFile "$env:TEMP\thunderbird_installer.exe"
 Start-Process -Wait -FilePath "$env:TEMP\thunderbird_installer.exe"
 Remove-Item "$env:TEMP\thunderbird_installer.exe" -Force
