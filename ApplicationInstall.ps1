@@ -27,16 +27,18 @@ Start-Process -Wait -FilePath "$env:TEMP\thunderbird_installer.exe"
 Remove-Item "$env:TEMP\thunderbird_installer.exe" -Force
 Write-Host "Thunderbird installed successfully."
 
-# Download MDT installer
+# Install MDT
 $mdtInstallerUrl = "https://download.microsoft.com/download/9/1/3/9138773A-505D-43E2-AC08-9A77E1E0490B/MicrosoftDeploymentToolkit_x64.msi"
 $mdtInstallerPath = "$env:TEMP\MDTInstaller.msi"
-
 Invoke-WebRequest -Uri $mdtInstallerUrl -OutFile $mdtInstallerPath
-
-# Install MDT
 Start-Process -Wait -FilePath msiexec.exe -ArgumentList "/i `"$mdtInstallerPath`" /quiet /norestart"
-
-# Clean up temporary files
 Remove-Item -Path $mdtInstallerPath -Force
-
 Write-Host "MDT installation completed successfully."
+
+# Install Veeam
+$veeamInstallerUrl = "https://path/to/veeam_installer.exe"
+Invoke-WebRequest -Uri $veeamInstallerUrl -OutFile "$env:TEMP\veeam_installer.exe"
+Install Veeam
+Start-Process -Wait -FilePath "$env:TEMP\veeam_installer.exe"
+Remove-Item "$env:TEMP\veeam_installer.exe" -Force
+Write-Host "Veeam installation completed successfully."
