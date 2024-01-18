@@ -4,15 +4,12 @@ function IsInstalled($programName) {
 }
 
 # Install Google Chrome
-if (-not (IsInstalled "chrome.exe")) {
-    Write-Host "Installing Google Chrome..."
-    $chromeInstallerUrl = "https://dl.google.com/chrome/install/latest/chrome_installer.exe"
-    Start-Process -Wait -FilePath "$env:TEMP\chrome_installer.exe" -ArgumentList "/silent" -PassThru
-    Remove-Item "$env:TEMP\chrome_installer.exe" -Force
-    Write-Host "Google Chrome installed successfully."
-} else {
-    Write-Host "Google Chrome is already installed."
-}
+$chromeInstallerUrl = "https://dl.google.com/chrome/install/latest/chrome_installer.exe"
+Invoke-WebRequest -Uri $chromeInstallerUrl -OutFile "$env:TEMP\chrome_installer.exe"
+Start-Process -Wait -FilePath "$env:TEMP\chrome_installer.exe" -ArgumentList "/silent"
+Remove-Item "$env:TEMP\chrome_installer.exe" -Force
+Write-Host "Google Chrome installed successfully."
+
 
 
 # Install Visual Studio Code
