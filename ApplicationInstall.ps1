@@ -6,7 +6,7 @@ function IsInstalled($programName) {
 # Install Google Chrome
 $chromeInstallerUrl = "https://dl.google.com/chrome/install/latest/chrome_installer.exe"
 Invoke-WebRequest -Uri $chromeInstallerUrl -OutFile "$env:TEMP\chrome_installer.exe"
-Start-Process -Wait -FilePath "$env:TEMP\chrome_installer.exe" -ArgumentList "/silent"
+Start-Process -Wait -FilePath "$env:TEMP\chrome_installer.exe" -ArgumentList
 Remove-Item "$env:TEMP\chrome_installer.exe" -Force
 Write-Host "Google Chrome installed successfully."
 
